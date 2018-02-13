@@ -6,55 +6,53 @@ import org.junit.Test;
 public class TestCCuentaSFP {
 
 	@Test
-	public void testCcuenta() {
+	public void testCcuentaSFP() {
 		Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 		assertNotNull(miCuenta);
-		//fail("Not yet implemented");
+		
 	}
 
 	@Test
-	public void testGetSaldo() {
+	public void testGetSaldoSFP() {
 		Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 		int miSaldo=(int)miCuenta.getSaldo();
-		System.out.print(miSaldo);
 		assertEquals(3200,miSaldo);
-		//fail("Not yet implemented");
+		
 	}
 
 	@Test
-	public void testIngresar() throws Exception {
+	public void testIngresarSFP() throws Exception {
 		Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 		int miIngreso=5000;
 		miCuenta.ingresar(miIngreso);
 		int miSaldo=(int)miCuenta.getSaldo();
 		assertEquals(8200, miSaldo);
-		//fail("Not yet implemented");
+		
 	}
 
 	@Test
-	public void testRetirar() throws Exception {
+	public void testRetirarSFP() throws Exception {
 		Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 		miCuenta.retirar(200);
 		int miSaldo=(int)miCuenta.getSaldo();
 		assertEquals(3000, miSaldo);
-		//fail("Not yet implemented");
+		
 	}
 
-	@Test
-	public void testRetirarSuperior() throws Exception {
+	@Test (expected=Exception.class)
+	public void testRetirarSuperiorSFP() throws Exception {
 		Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 		miCuenta.retirar(3300);
-		boolean saldoInferior=true;
 		int miSaldo=(int)miCuenta.getSaldo();
 		if (miSaldo<0) {
-			saldoInferior=false;
+			boolean negativo=true;
+			assertTrue(negativo);
 		}
-		assertFalse(saldoInferior);
-		//fail("Not yet implemented");
+		
 	}
 	
 	@Test(expected=Exception.class)
-	public void testIngresarNegativa() throws Exception{
+	public void testIngresarNegativaSFP() throws Exception{
 	Ccuenta miCuenta=new Ccuenta("Sergio","Fernández",3200,1);
 	miCuenta.ingresar(-600);
 	int miSaldo=(int)miCuenta.getSaldo();
